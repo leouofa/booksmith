@@ -1,0 +1,99 @@
+---
+:title: "My Book"
+:author: Authored by Author Name
+
+# Font families (must match a registered Prawn font family name).
+:title_font: "Noto Sans Mono"
+:author_font: "Noto Sans Mono"
+:header_font: "Noto Sans"
+:subtitle_font: "Noto Sans Mono"
+:body_font: "Noto Sans"
+
+# Insert a blank page between the cover and the first chapter.
+:blank_page_after_cover: true
+
+# Show a table of contents after the blank page.
+:table_of_contents: true
+
+# Body text size used throughout the book.
+:font_size: 10.0
+
+# Explicit header font sizes (Markdown: #, ##, ###, ####).
+:title_font_size: 24
+:author_font_size: 18
+:title_author_spacing: 20
+
+:h1_font_size: 20
+:h2_font_size: 18
+:h3_font_size: 14
+:h4_font_size: 12
+
+:line_height: 1.5
+# PNG flatten color for inline images on the page background.
+:image_flatten_bg_color: "FFFFFF"
+:page_numbers: true
+:page_number_font_size: 9
+# Extra space above the page numbers reserved from body text.
+:page_content_bottom_gap: 30
+
+# Subtitle font size (points). The subtitle is set via an HTML comment after the chapter title.
+:subtitle_font_size: 12
+# Whether subtitle text should be bold.
+:subtitle_bold: false
+
+# Space (in points) after a chapter title when no subtitle is present.
+:title_spacing_after: 20
+# Space (in points) after a subtitle line.
+:subtitle_spacing_after: 15
+
+# List layout
+:list_bullet_indent: 7    # left indent per nesting level for bullet lists (points)
+:list_number_indent: 9    # left indent per nesting level for numbered lists (points)
+:list_bullet_offset: 10   # bullet overhang left of text edge (points)
+:list_marker_gap: 4       # space between marker (e.g. "1.") and item text (points)
+:list_item_spacing: 6     # vertical gap between items (points)
+:list_margin_top: 1       # space before the list block (points)
+:list_margin_bottom: 10    # space after the list block (points)
+
+# Blockquote / callout box styling
+:blockquote_bg_color: "EEEEEE"   # hex grey, no leading #
+:blockquote_image_flatten_bg_color: "EEEEEE"
+:blockquote_padding: 12           # default when per-side values are omitted (points)
+:blockquote_padding_left: 12
+:blockquote_padding_right: 12
+:blockquote_padding_top: 20
+:blockquote_padding_bottom: 10
+:blockquote_margin_top: 10        # space above the box (points)
+:blockquote_margin_bottom: 10     # space below the box (points)
+:blockquote_header_font_size: 14  # bold first line when wrapped in ** **
+:blockquote_header_gap: 6          # space between bold header and body
+
+# Alternate blockquote styling
+:alt_blockquote_bg_color: "F5F5F5"   # hex grey, no leading #
+:alt_blockquote_image_flatten_bg_color: "F5F5F5"
+:alt_blockquote_padding_left: 12
+:alt_blockquote_padding_right: 12
+:alt_blockquote_padding_top: 18
+:alt_blockquote_padding_bottom: 8
+:alt_blockquote_margin_top: 10        # space above the box (points)
+:alt_blockquote_margin_bottom: 10     # space below the box (points)
+:alt_blockquote_header_font_size: 14
+:alt_blockquote_header_gap: 6
+
+# Exercise blockquote block
+:exercise_blockquote_bg_color: "EEF3FF"
+:exercise_blockquote_image_flatten_bg_color: "EEF3FF"
+:exercise_blockquote_padding: 14
+:exercise_blockquote_padding_left: 12
+:exercise_blockquote_padding_right: 16
+:exercise_blockquote_padding_top: 18
+:exercise_blockquote_padding_bottom: 10
+:exercise_blockquote_margin_top: 12
+:exercise_blockquote_margin_bottom: 12
+:exercise_blockquote_image: "assets/clock.png"
+:exercise_blockquote_image_width: 18
+:exercise_blockquote_image_height: 18
+:exercise_blockquote_image_gap: 8
+:exercise_blockquote_image_voffset: -2   # vertical nudge for icon alignment (points; positive = up)
+:exercise_blockquote_header_font_size: 14
+:exercise_blockquote_header_gap: 6

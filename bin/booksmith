@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'booksmith'
+Booksmith::CLI.run!
