@@ -14,6 +14,7 @@
 Self-publishing technical guides, fiction, or non-fiction on **Amazon Kindle Direct Publishing (KDP)** usually requires painful manual formatting in Word/InDesign or fragile HTML-to-PDF scripts that fail Amazon's automated interior print inspection.
 
 **Booksmith** solves this with a purpose-built, dual-engine compilation pipeline. Written in Ruby, Booksmith reads clean Markdown and compiles it into:
+
 - **Print-Ready PDFs** configured with Amazon KDP-compliant margins, geometry, vector typography, running headers, and dynamically resolved tables of contents.
 - **Reflowable EPUB 3 eBooks** bundled with embedded typography, validated navigation manifests, and custom callout styling ready for Kindle ingestion.
 
@@ -25,8 +26,8 @@ Booksmith isn't a theoretical proof-of-concept—it powers live, commercial titl
 
 | Title | Formats Published | Store Link |
 | :--- | :--- | :--- |
-| **Modern Applications of Ninjutsu** | Paperback • Hardcover • Kindle | [View on Amazon](https://www.amazon.com/dp/B0HNF1T788/) |
-| **Jealousy in the Jungle: Invitation & Rival's Awakening** | Paperback • Hardcover • Kindle | [View on Amazon](https://www.amazon.com/Jealousy-Jungle-Invitation-Rivals-Awakening/dp/B0DY872FHM/) |
+| **Modern Applications of Ninjutsu** | Hardcover • Kindle | [View on Amazon](https://www.amazon.com/dp/B0HNF1T788/) |
+| **Jealousy in the Jungle: Invitation & Rival's Awakening** | Hardcover • Kindle | [View on Amazon](https://www.amazon.com/Jealousy-Jungle-Invitation-Rivals-Awakening/dp/B0DY872FHM/) |
 
 > [!NOTE]
 > Both titles passed Amazon KDP's automated preflight review, interior gutter/margin validation, and reflowable eBook ingest with **zero formatting rejections**.
@@ -75,19 +76,25 @@ flowchart TD
 ### Engineering Design Highlights
 
 #### 1. Two-Pass PDF Pagination & TOC Resolution
+
 Generating a table of contents in print documents presents a circular dependency: adding TOC entries can push chapter pages down, altering the page numbers that the TOC itself displays. Booksmith resolves this with a deterministic two-pass algorithm:
+
 1. **Pass 1 (Measurement)**: Traverses the Kramdown AST in an in-memory Prawn buffer to compute exact chapter heights, section boundaries, and TOC page space.
 2. **Pass 2 (Synthesis)**: Applies the computed TOC page offset, injects the generated Table of Contents, formats running page numbers (`page_content_bottom_gap`), and writes the final vector PDF.
 
 #### 2. Vector Typography & Geometry Engine
+
 Instead of relying on web-view wrappers or headless browsers, Booksmith renders directly to PDF primitives using `Prawn`. Text leading, bullet indentations (`list_bullet_indent`, `list_marker_gap`), and callout paddings are calculated in points, producing crisp vector type that meets high-resolution commercial print standards (300+ DPI).
 
 #### 3. Dual-Format AST Translation
+
 Booksmith normalizes Markdown elements into an intermediate AST via Kramdown, then branches execution:
+
 - **PDF Converter** (`Booksmith::PDFConverter`): Translates elements into low-level Prawn cursor calls, handling bounding boxes, font switching, and multi-column icon callouts.
 - **EPUB Generator** (`Booksmith::EpubGenerator`): Serializes nodes into strict XHTML, injects embedded CSS, registers the TrueType fonts in the OPF manifest, and packages the complete EPUB 3 archive via GEPUB.
 
 #### 4. Automated Image Pre-processing & Alpha Flattening
+
 PDF renderers and commercial print presses frequently misrender PNG alpha transparency as opaque black blocks. Booksmith reads configuration-driven background colors (`image_flatten_bg_color`) and utilizes ImageMagick to composite transparent images against the target page tone before embedding.
 
 ---
@@ -211,6 +218,7 @@ All book layout options, metadata, and typography parameters are managed in `con
 Booksmith supports full GitHub Flavored Markdown with custom layout enhancements:
 
 ### Chapter Titles & Subtitles
+
 Use standard `#` for chapter titles, followed immediately by an invisible subtitle comment:
 
 ```markdown
@@ -221,6 +229,7 @@ Chapter opening text starts here...
 ```
 
 ### Manual Page Breaks
+
 Insert a clean page break anywhere in your manuscript without adding visible artifacts in Markdown viewers:
 
 ```markdown
@@ -248,6 +257,7 @@ Insert a clean page break anywhere in your manuscript without adding visible art
 ```
 
 ### Sized & Centered Images
+
 Specify dimensions and vertical padding directly in image Markdown:
 
 ```markdown
